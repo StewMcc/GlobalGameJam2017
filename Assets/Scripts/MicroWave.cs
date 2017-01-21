@@ -31,16 +31,18 @@ public class MicroWave : VRTK_InteractableObject {
 
 	protected void OnCollisionEnter(Collision collision) {
 		if (collision.gameObject.tag == "MetalObject" && !(isFiring_ || isCharging_)) {
-			isCharging_ = true;
 			MetalObject metalObject = collision.gameObject.GetComponent<MetalObject>();
+			if (metalObject.IsGrabbed()) {
+				isCharging_ = true;
+				chargingTimer_.SetTimer(metalObject.ChargeTime());
+				chargingTimer_.StartTimer();
+				fireTimer_.SetTimer(metalObject.FireDuration());
+				damageAmount_ = metalObject.MetalStrength();
 
-			chargingTimer_.SetTimer(metalObject.ChargeTime());
-			chargingTimer_.StartTimer();
-			fireTimer_.SetTimer(metalObject.FireDuration());
-			damageAmount_ = metalObject.MetalStrength();
+				// Todo: Augment the Microwave Fire Dimensions.
 
-			// Augment the Microwave Fire Dimensions.
-			Destroy(collision.gameObject);			
+				Destroy(collision.gameObject);
+			}		
 		}
 	}
 
@@ -56,6 +58,7 @@ public class MicroWave : VRTK_InteractableObject {
 				ResetDisplay();
 			}
 			else {
+				// otherwise update the countdown.
 				countdownText.text = chargingTimer_.TimeRemaining().ToString("F1");
 				countDownImage.fillAmount = chargingTimer_.TimeRemaining() / chargingTimer_.Duration();
 			}

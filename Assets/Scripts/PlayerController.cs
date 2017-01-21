@@ -21,14 +21,25 @@ public class PlayerController : MonoBehaviour {
 	private void Start() {
 		health_ = initialHealth;
 
-		healthText.text = "Score: " + score_.ToString("F0");
+		scoreText.text = "Score: " + score_.ToString("F0");
 		healthText.text = "Health: " + health_.ToString("F0");
+
+		EventManagerPlayer.OnPlayerScores += OnPlayerScore;
+		EventManagerPlayer.OnEnemyAttack += OnEnemyAttack;
 	}
 
 	private void Update() {
-		healthText.text = "Score: " + score_.ToString("F0");
+		scoreText.text = "Score: " + score_.ToString("F0");
 		healthText.text = "Health: " + health_.ToString("F0");
 		healthBar.fillAmount = health_ / initialHealth;
 	}
 
+	void OnPlayerScore(float points) {
+		score_ += points;
+	}
+
+	void OnEnemyAttack(float damage) {
+		health_ -= damage;
+		// TODO: check if 0 health and load end screen?
+	}
 }
