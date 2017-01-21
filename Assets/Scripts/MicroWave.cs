@@ -26,7 +26,7 @@ public class MicroWave : VRTK_InteractableObject {
 
 	protected override void Awake() {
 		base.Awake();		
-		ResetClock();
+		ResetDisplay();
 	}
 
 	protected void OnCollisionEnter(Collision collision) {
@@ -53,7 +53,7 @@ public class MicroWave : VRTK_InteractableObject {
 			if (chargingTimer_.IsFinished()) {
 				isCharging_ = false;
 				FireMicroWave();
-				ResetClock();
+				ResetDisplay();
 			}
 			else {
 				countdownText.text = chargingTimer_.TimeRemaining().ToString("F1");
@@ -81,7 +81,7 @@ public class MicroWave : VRTK_InteractableObject {
 		isFiring_ = false;
 	}
 
-	private void ResetClock() {
+	private void ResetDisplay() {
 		countdownText.text = "00:00";
 		countDownImage.fillAmount = 0.0f;
 	}

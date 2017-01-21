@@ -10,6 +10,8 @@ public class EnemySpawner : MonoBehaviour {
 
 	[SerializeField]
 	float rateOfSpawn = 0.5f;
+
+	SimpleTimer spawnTimer = new SimpleTimer();
 	
 	// Update is called once per frame
 	void Update () {
