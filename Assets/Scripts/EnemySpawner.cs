@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
+using UnityEngine.AI;
 [System.Serializable]
 public class Spawning 
 {
@@ -32,10 +32,19 @@ public class EnemySpawner : MonoBehaviour {
 
 
     [SerializeField]
-    private List<Spawning> spawningItem;
+    public List<Spawning> spawningItem;
 
     [SerializeField]
     private float sizeOfSpawnArea;
+
+    [SerializeField]
+    public float enemySpeed = 1.5f;
+
+    [SerializeField]
+    public float enemyScoreForKilling;
+
+    [SerializeField]
+    public float enemyDamange;
 
     public bool isSpawninging;
 
@@ -61,8 +70,13 @@ public class EnemySpawner : MonoBehaviour {
                             spawn.delayOnSpawn = SelecteRandomTimeToSpawn(spawn.minTimeToSpawn, spawn.maxTimeToSpawn);
 
 
-                            Instantiate(spawn.spawningIteam, SelectRandomPosition(sizeOfSpawnArea), Quaternion.identity);
+                            GameObject enemy = Instantiate(spawn.spawningIteam, SelectRandomPosition(sizeOfSpawnArea), Quaternion.identity) as GameObject;
 
+                            enemy.GetComponent<EnemyDeath>().scoreValue = enemyScoreForKilling;
+                            enemy.GetComponent<EnemyDeath>().enemyDamage = enemyDamange;
+
+
+                          //  enemy.GetComponent<NavMeshAgent>().speed = enemySpeed;
                             spawn.sizeOfWave--;
                         }
                     }

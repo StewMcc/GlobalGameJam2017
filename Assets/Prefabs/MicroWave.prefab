@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 33047235397956294}
   - component: {fileID: 65603675347588910}
   - component: {fileID: 23674390661149792}
+  - component: {fileID: 114126613302726690}
   m_Layer: 0
   m_Name: MetalAugmetedWave
   m_TagString: DamagingMicroWave
@@ -110,7 +111,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1441990903522056}
   m_LocalRotation: {x: -0, y: -0.7054596, z: -0, w: 0.7087502}
-  m_LocalPosition: {x: 0.714, y: 0.925, z: 1.014}
+  m_LocalPosition: {x: 0.71, y: 0.925, z: 0.394}
   m_LocalScale: {x: 0.31171578, y: 0.31171578, z: 0.62343156}
   m_Children:
   - {fileID: 224908753394130782}
@@ -267,6 +268,17 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114126613302726690
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1315990428491660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2e05e6f4ffcb094fa1cf9e2d83b5e87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114182900291883642
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -290,7 +302,7 @@ MonoBehaviour:
   grabAttachMechanicScript: {fileID: 114889249054382120}
   secondaryGrabActionScript: {fileID: 0}
   isUsable: 1
-  holdButtonToUse: 0
+  holdButtonToUse: 1
   useOnlyIfGrabbed: 0
   pointerActivatesUseAction: 0
   useOverrideButton: 0
@@ -391,7 +403,7 @@ MonoBehaviour:
   leftSnapHandle: {fileID: 0}
   throwVelocityWithAttachDistance: 0
   throwMultiplier: 1
-  onGrabCollisionDelay: 1
+  onGrabCollisionDelay: 0
   destroyImmediatelyOnThrow: 1
   breakForce: 1500
 --- !u!208 &208795772202482082
@@ -483,16 +495,16 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1224218971037240}
-  m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalRotation: {x: 0.50298536, y: 0.49878412, z: 0.49478006, w: 0.50340134}
+  m_LocalPosition: {x: 0, y: 0, z: -0.00000002390184}
   m_LocalScale: {x: 0.0040000076, y: 0.0010000019, z: 0.0040000067}
   m_Children:
   - {fileID: 224384325542125602}
   m_Father: {fileID: 4457624559473228}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 180, y: -90, z: -90}
+  m_LocalEulerAnglesHint: {x: 179.265, y: -89.79599, z: -90.252014}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.52, y: 0.021}
+  m_AnchoredPosition: {x: -0.52000046, y: 0.021000195}
   m_SizeDelta: {x: 256, y: 1024}
   m_Pivot: {x: 0.5, y: 0.5}
