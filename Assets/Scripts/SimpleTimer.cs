@@ -15,6 +15,7 @@ class SimpleTimer {
 	}
 
 	public void StartTimer() {
+		isFinished_ = false;
 		timeRemaining_ = duration_;
 	}
 	public float TimeRemaining() {
