@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - TeleportIgnore
+  - MetalObject
+  - Enemies
   layers:
   - Default
   - TransparentFX
