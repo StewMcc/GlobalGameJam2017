@@ -1,102 +1,73 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿using UnityEngine;
 using UnityEngine.AI;
-[System.Serializable]
-public class Spawning 
-{
-    [SerializeField]
-    public GameObject spawningIteam;
-
-    [SerializeField]
-    public bool setToSpawn;
-
-    public int sizeOfWave;
-
-    [SerializeField]
-    public float minTimeToSpawn;
-
-    [SerializeField]
-    public float maxTimeToSpawn;
-
-    [HideInInspector]
-    public float timer;
-
-    [HideInInspector]
-    public float delayOnSpawn; 
-
-}
 
 public class EnemySpawner : MonoBehaviour {
 
+	[SerializeField]
+	GameObject objectToSpawn =null;
 
-    [SerializeField]
-    public List<Spawning> spawningItem;
+	[SerializeField]
+	float sizeOfSpawnArea = 1.0f;
 
-    [SerializeField]
-    private float sizeOfSpawnArea;
+	[SerializeField]
+	float minTimeToSpawn =0.0f;
 
-    [SerializeField]
-    public float enemySpeed = 1.5f;
+	[SerializeField]
+	float maxTimeToSpawn = 1.0f;
 
-    [SerializeField]
-    public float enemyScoreForKilling;
+	[SerializeField]
+	float baseEnemySpeed = 1.5f;
 
-    [SerializeField]
-    public float enemyDamange;
+	[SerializeField]
+	int baseSpawnNumber = 0;
 
-    public bool isSpawninging;
+	WaveSettings currentWaveSettings = null;
 
+	SimpleTimer spawnTimer = new SimpleTimer();
 
-    private void Update()
-    {
-        if(isSpawninging)
-        {
-            foreach( Spawning spawn in spawningItem)
-            {
-                if (spawn.setToSpawn)
-                {
-                    if (spawn.sizeOfWave > 0)
-                    {
-                        if (spawn.timer < spawn.delayOnSpawn)
-                        {
-                            spawn.timer += Time.deltaTime;
-                        }
-                        else
-                        {
-                            spawn.timer = 0;
+	bool isSpawning =false;
+	int numSpawned = 0;
+	private void Update() {
+		if (isSpawning) {
+			spawnTimer.Update();
+			if (spawnTimer.IsFinished()) {
+				spawnTimer.SetTimer(SelecteRandomTimeToSpawn(minTimeToSpawn, maxTimeToSpawn));
+				spawnTimer.StartTimer();
+				SpawnEnemy();
+			}
+		}	
+	}
+	void OnDrawGizmosSelected() {
+		Gizmos.color = Color.yellow;
+		Gizmos.DrawSphere(transform.position, sizeOfSpawnArea);
+	}
 
-                            spawn.delayOnSpawn = SelecteRandomTimeToSpawn(spawn.minTimeToSpawn, spawn.maxTimeToSpawn);
+	public int StartNewWave(WaveSettings newSettings) {
+		currentWaveSettings = newSettings;
+		spawnTimer.SetTimer(SelecteRandomTimeToSpawn(minTimeToSpawn, maxTimeToSpawn));
+		spawnTimer.StartTimer();
+		isSpawning = true;
+		return baseSpawnNumber + currentWaveSettings.increaseOfEnemies;
+	}
 
+	public float SelecteRandomTimeToSpawn(float minTime, float maxTime) {
+		return Random.Range(minTime, maxTime);
+	}
 
-                            GameObject enemy = Instantiate(spawn.spawningIteam, SelectRandomPosition(sizeOfSpawnArea), Quaternion.identity) as GameObject;
+	public Vector3 SelectRandomPosition(float sizeOfZone) {
+		Vector2 newPos = Random.insideUnitCircle * sizeOfZone;
 
-                            enemy.GetComponent<EnemyDeath>().scoreValue = enemyScoreForKilling;
-                            enemy.GetComponent<EnemyDeath>().enemyDamage = enemyDamange;
+		return transform.position + new Vector3(newPos.x, 0, newPos.y);
+	}
 
-
-                          //  enemy.GetComponent<NavMeshAgent>().speed = enemySpeed;
-                            spawn.sizeOfWave--;
-                        }
-                    }
-                }
-            }
-        }
-    }
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawSphere(transform.position, sizeOfSpawnArea);
-    }
-
-    public float SelecteRandomTimeToSpawn(float minTime, float maxTime)
-    {
-        return Random.Range(minTime, maxTime);
-    }
-
-    public Vector3 SelectRandomPosition(float sizeOfZone)
-    {
-        return transform.position  +  Random.insideUnitSphere * sizeOfZone;
-    }
+	void SpawnEnemy() {
+		numSpawned++;
+		GameObject enemy = Instantiate(objectToSpawn, SelectRandomPosition(sizeOfSpawnArea), Quaternion.identity) as GameObject;
+		enemy.GetComponent<EnemyDeath>().scoreValue *= currentWaveSettings.enemyScoreMultiplier;
+		enemy.GetComponent<EnemyDeath>().enemyDamage *= currentWaveSettings.enemyDamageMultiplier;
+		enemy.GetComponent<NavMeshAgent>().speed = baseEnemySpeed * currentWaveSettings.enemySpeedMultiplier;
+		if (numSpawned > (baseSpawnNumber + currentWaveSettings.increaseOfEnemies)) {
+			isSpawning = false;
+		}
+	}
 }
