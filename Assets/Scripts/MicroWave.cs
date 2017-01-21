@@ -14,6 +14,10 @@ public class MicroWave : VRTK_InteractableObject {
 	[SerializeField]
 	private Image countDownImage =null;
 
+	[Tooltip("Used when microwave fires.")]
+	[SerializeField]
+	private GameObject waveEffect = null;
+
 	[SerializeField]
 	private float damageAmount = 10.0f;
 
@@ -31,9 +35,9 @@ public class MicroWave : VRTK_InteractableObject {
 		if(collision.gameObject.tag == "MetalObject") {
 			isCharging_ = true;
 			collision.gameObject.GetComponent<MetalObjects>().MetalStrength();
+			// Augment the Microwave Fire Dimensions.
 			Destroy(collision.gameObject);
-			// get metal value, and calculate charge time.
-			// or use metal value for damage calculation
+			waveEffect.SetActive(false);
 		}
 	}
 		
@@ -55,9 +59,9 @@ public class MicroWave : VRTK_InteractableObject {
 			}
 		}
 	}
-
+		
 	private void FireMicroWave() {
-
+		waveEffect.SetActive(true);
 	}
 	private void ResetClock() {
 		countdownText.text = "00:00";
