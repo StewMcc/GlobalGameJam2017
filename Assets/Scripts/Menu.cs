@@ -36,7 +36,9 @@ public class Menu : VRTK_DestinationMarker
 				var distance = Vector3.Distance(transform.position, destination.position);
 				var controllerIndex = VRTK_DeviceFinder.GetControllerIndex(controller.gameObject);
 				OnDestinationMarkerSet(SetDestinationMarkerEvent(distance, destination, new RaycastHit(), destination.position, controllerIndex));
-				playerArea.enabled = false;
+				waveController.RestartGame();
+				waveController.StartGame();
+				//playerArea.enabled = false;
 			}
 			lastUsePressedState = controller.usePressed;
 		}

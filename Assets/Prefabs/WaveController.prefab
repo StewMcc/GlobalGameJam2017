@@ -54,10 +54,24 @@ MonoBehaviour:
   waveText: {fileID: 0}
   waveSettings:
   - enemySpeedMultiplier: 1
+    increaseOfEnemies: 0
+    enemyScoreMultiplier: 1
+    enemyDamageMultiplier: 1
+    waveDelay: 2
+    enemySpawners:
+    - {fileID: 0}
+  - enemySpeedMultiplier: 1
     increaseOfEnemies: 2
     enemyScoreMultiplier: 1
     enemyDamageMultiplier: 1
-    waveDelay: 12
+    waveDelay: 2
+    enemySpawners:
+    - {fileID: 0}
+  - enemySpeedMultiplier: 1
+    increaseOfEnemies: 4
+    enemyScoreMultiplier: 1
+    enemyDamageMultiplier: 100
+    waveDelay: 1
     enemySpawners:
     - {fileID: 0}
   - enemySpeedMultiplier: 1
@@ -67,3 +81,4 @@ MonoBehaviour:
     waveDelay: 1
     enemySpawners:
     - {fileID: 0}
+  startPos: {fileID: 0}
