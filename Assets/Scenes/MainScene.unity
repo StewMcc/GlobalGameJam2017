@@ -4603,6 +4603,11 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1362119602}
+    - target: {fileID: 114537551900237556, guid: c02cb744b6d62cd4090fff3c389f9f76,
+        type: 2}
+      propertyPath: targetListPolicy
+      value: 
+      objectReference: {fileID: 1652707506}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c02cb744b6d62cd4090fff3c389f9f76, type: 2}
   m_IsPrefabParent: 0
@@ -5146,7 +5151,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1641761227}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.096, y: 0, z: -0.283}
+  m_LocalPosition: {x: 1.995, y: 0.284, z: -0.283}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5207,6 +5212,18 @@ Transform:
   m_PrefabParentObject: {fileID: 4125155358937824, guid: a3ac05f8694a0ad428a6a1c7a3f5b5ec,
     type: 2}
   m_PrefabInternal: {fileID: 1645881974}
+--- !u!114 &1652707506 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114501367176938574, guid: c02cb744b6d62cd4090fff3c389f9f76,
+    type: 2}
+  m_PrefabInternal: {fileID: 1550887108}
+  m_Script: {fileID: 11500000, guid: 2ed2aa1a29b92ca4f84a26a5f6e9218b, type: 3}
+--- !u!114 &1652707507 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114537551900237556, guid: c02cb744b6d62cd4090fff3c389f9f76,
+    type: 2}
+  m_PrefabInternal: {fileID: 1550887108}
+  m_Script: {fileID: 11500000, guid: 377ced3493c4e1842a5b1c23f56519db, type: 3}
 --- !u!1 &1669125070
 GameObject:
   m_ObjectHideFlags: 0
@@ -6185,6 +6202,8 @@ MonoBehaviour:
   scoreText: {fileID: 1114433898}
   waveText: {fileID: 408673473}
   waveController: {fileID: 1005822835}
+  playerArea: {fileID: 1652707507}
+  destination: {fileID: 1641761228}
 --- !u!54 &2035593283
 Rigidbody:
   m_ObjectHideFlags: 0
