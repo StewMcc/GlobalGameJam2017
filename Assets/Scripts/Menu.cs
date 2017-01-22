@@ -7,8 +7,8 @@ public class Menu : VRTK_DestinationMarker
 
     [SerializeField]
     private WaveController waveController;
-    private bool lastUsePressedState = false;
 
+    private bool lastUsePressedState = false;
 
     private void OnTriggerStay(Collider collider)
     {

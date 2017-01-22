@@ -85,7 +85,7 @@ public class MicroWave : VRTK_InteractableObject {
 	}
 
 	private void ResetDisplay() {
-		countdownText.text = "00:00";
+		countdownText.text = "";
 		countDownImage.fillAmount = 0.0f;
 	}
 }

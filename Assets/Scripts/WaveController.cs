@@ -22,7 +22,7 @@ public class WaveController : MonoBehaviour {
 	WaveSettings[] waveSettings = null;
 
     [SerializeField]
-   public Transform startPos;
+	public Transform startPos;
 
 	int waveNumber = 0;
 
