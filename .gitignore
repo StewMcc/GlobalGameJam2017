@@ -5,6 +5,9 @@
 /[Bb]uilds/
 /[Aa]ssets/[Aa]sset[Ss]tore[Tt]ools*
 
+# Ignore Unity Reflection generated
+*.exr
+*.exr.meta
 # Ignore Waste of space SteamVR Stuff ( Huge 10mb files in here..no real need)
 /[Aa]ssets/SteamVR/InteractionSystem/*
 /[Aa]ssets/SteamVR/Materials/*
@@ -47,5 +50,3 @@ sysinfo.txt
 *.swp
 StyleCop*
 
-# Ignore the recordings
-/CSV/SceneFiles/Recordings/*

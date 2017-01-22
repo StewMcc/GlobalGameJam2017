@@ -25,8 +25,8 @@ public class Menu : VRTK_DestinationMarker
 
         if(gameOver)
         {
-            scoreText.text = gameOver.finalScore.ToString();
-            waveText.text = gameOver.finalWave.ToString();
+            scoreText.text = "Score:" + gameOver.finalScore.ToString();
+            waveText.text = "Wave:" + gameOver.finalWave.ToString();
         }
     }
 		private void OnTriggerStay(Collider collider) {
