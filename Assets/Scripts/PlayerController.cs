@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using VRTK;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 
@@ -42,8 +43,13 @@ public class PlayerController : MonoBehaviour {
         if(health_ <= 0 )
         {
             isAlive = false;
-         }
-	}
+            GameOverScript gameOver =  new GameObject().AddComponent<GameOverScript>();
+
+            gameOver.setFinalGameScores((int)score_, WaveController.waveNumber);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+        }
+    }
 
 	void OnPlayerScore(float points) {
 		score_ += points;

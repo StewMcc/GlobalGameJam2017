@@ -24,7 +24,7 @@ public class WaveController : MonoBehaviour {
     [SerializeField]
 	public Transform startPos;
 
-	int waveNumber = 0;
+	public static int waveNumber = 0;
 
 	SimpleTimer waveTimer = new SimpleTimer();
 
@@ -57,6 +57,9 @@ public class WaveController : MonoBehaviour {
         waveTimer.StartTimer();
 
         numberOfEnemiesLeft = -1;
+       GameObject gameOver =   FindObjectOfType<GameOverScript>().gameObject;
+
+        Destroy(gameOver);
     }
  
 
