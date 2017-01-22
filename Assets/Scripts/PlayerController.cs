@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using VRTK;
 
 public class PlayerController : MonoBehaviour {
 
@@ -18,6 +19,11 @@ public class PlayerController : MonoBehaviour {
 	private float score_ = 0.0f;
 	private float health_;
 
+    public event DestinationMarkerEventHandler DestinationMarkerSet;
+
+    [SerializeField]
+    private Transform memuLocaiton;
+    public static bool isAlive = true;
 	private void Start() {
 		health_ = initialHealth;
 
@@ -32,6 +38,11 @@ public class PlayerController : MonoBehaviour {
 		scoreText.text = "Score: " + score_.ToString("F0");
 		healthText.text = "Health: " + health_.ToString("F0");
 		healthBar.fillAmount = health_ / initialHealth;
+
+        if(health_ <= 0 )
+        {
+            isAlive = false;
+         }
 	}
 
 	void OnPlayerScore(float points) {

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-
+using VRTK;
 [System.Serializable]
 public class WaveSettings {
 	public float enemySpeedMultiplier = 1.0f;
@@ -21,38 +21,76 @@ public class WaveController : MonoBehaviour {
 	[SerializeField]
 	WaveSettings[] waveSettings = null;
 
+    [SerializeField]
+   public Transform startPos;
+
 	int waveNumber = 0;
 
 	SimpleTimer waveTimer = new SimpleTimer();
 
 	public static int numberOfEnemiesLeft = -1;
 
-	private void Start() {
-		waveTimer.SetTimer(waveSettings[waveNumber].waveDelay);
-		waveTimer.StartTimer();
-	}
+    bool isPlaying = false;
 
-	private void Update() {
-		if (waveNumber  < waveSettings.Length) {
-			if (numberOfEnemiesLeft <= 0) {
-				waveTimer.Update();
-				waveText.text = "Wave: " + waveNumber.ToString("F0") +
-					"\nNext Wave in: " + waveTimer.TimeRemaining().ToString("F1");
-				
-				if (waveTimer.IsFinished()) {
-					SpawnWave();
-				}
-			}
-			else {
-				waveText.text = "Wave: " + waveNumber.ToString("F0") +
-					"\nEnemies Left: " + (numberOfEnemiesLeft).ToString();
-			}
-		}
-		else {
-			waveText.text = "Wave: " + waveNumber.ToString("F0") +
-				"\nFinished";
-		}
-	}
+    public void RestartGame()
+    {
+        waveNumber = 0;
+        EnemyDeath[] enemiesLeft = GameObject.FindObjectsOfType<EnemyDeath>();
+
+        foreach(EnemyDeath en in enemiesLeft)
+        {
+            Destroy(en.gameObject);
+        }
+    }
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(startPos.position, 0.2f);
+    }
+
+    public void StartGame()
+    {
+
+        isPlaying = true;
+
+        waveTimer.SetTimer(waveSettings[waveNumber].waveDelay);
+        waveTimer.StartTimer();
+
+        numberOfEnemiesLeft = -1;
+    }
+ 
+
+    private void Update()
+    {
+
+        if (isPlaying)
+        {
+            if (waveNumber < waveSettings.Length)
+            {
+                if (numberOfEnemiesLeft <= 0)
+                {
+                    waveTimer.Update();
+                    waveText.text = "Wave: " + waveNumber.ToString("F0") +
+                        "\nNext Wave in: " + waveTimer.TimeRemaining().ToString("F1");
+
+                    if (waveTimer.IsFinished())
+                    {
+                        SpawnWave();
+                    }
+                }
+                else
+                {
+                    waveText.text = "Wave: " + waveNumber.ToString("F0") +
+                        "\nEnemies Left: " + (numberOfEnemiesLeft).ToString();
+                }
+            }
+            else
+            {
+                waveText.text = "Wave: " + waveNumber.ToString("F0") +
+                    "\nFinished";
+            }
+        }
+    }
 
 	private void SpawnWave() {        
 		numberOfEnemiesLeft = 0;
