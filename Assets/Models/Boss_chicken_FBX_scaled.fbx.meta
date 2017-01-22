@@ -1,7 +1,7 @@
 fileFormatVersion: 2
-guid: 5be0c7b3b01be354ba45dc8ce04184e9
-timeCreated: 1484994361
-licenseType: Free
+guid: dcbb064883545a244ac635182105a692
+timeCreated: 1485041251
+licenseType: Pro
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
@@ -9,8 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Drum_stick_creature_mesh
-    4300002: Drum_stick_creatureRemesh_1:ZBrushPolyMesh3D
+    4300000: Boss_chicken_Boss_chicken_original:ZBrushPolyMesh3D
     9500000: //RootNode
   materials:
     importMaterials: 0
