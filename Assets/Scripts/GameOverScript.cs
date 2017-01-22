@@ -7,7 +7,7 @@ public class GameOverScript : MonoBehaviour {
  
 
     public int finalScore;
-   public int finalWave;
+	public int finalWave;
 	// Use this for initialization
 	void Start () {
         DontDestroyOnLoad(gameObject);

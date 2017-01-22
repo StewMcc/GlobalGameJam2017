@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
-
+using VRTK;
 public class EnemyNavigation : MonoBehaviour {
 
+	[SerializeField]
 	private Transform target_ =null;
 	private NavMeshAgent agent_ = null;
 
@@ -10,7 +11,7 @@ public class EnemyNavigation : MonoBehaviour {
 
 	void Start() {
 		agent_ = GetComponent<NavMeshAgent>();
-		target_ = GameObject.FindWithTag("MainCamera").transform;
+		target_ = VRTK_DeviceFinder.HeadsetTransform();
 		agent_.destination = target_.position;
 		retargetTimer_.SetTimer(2);
 		retargetTimer_.StartTimer();

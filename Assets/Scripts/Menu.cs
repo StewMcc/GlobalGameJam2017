@@ -26,6 +26,7 @@ public class Menu : VRTK_DestinationMarker
             waveText.text = gameOver.finalWave.ToString();
         }
     }
+	
     private void OnTriggerStay(Collider collider)
     {
         var controller = (collider.GetComponent<VRTK_ControllerEvents>() ? collider.GetComponent<VRTK_ControllerEvents>() : collider.GetComponentInParent<VRTK_ControllerEvents>());

@@ -57,9 +57,10 @@ public class WaveController : MonoBehaviour {
         waveTimer.StartTimer();
 
         numberOfEnemiesLeft = -1;
-       GameObject gameOver =   FindObjectOfType<GameOverScript>().gameObject;
-
-        Destroy(gameOver);
+		GameOverScript gameOver = FindObjectOfType<GameOverScript>();		
+		if (gameOver) {
+			Destroy(gameOver.gameObject);
+		}
     }
  
 
