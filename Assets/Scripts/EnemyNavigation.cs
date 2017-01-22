@@ -2,8 +2,7 @@
 using UnityEngine.AI;
 using VRTK;
 public class EnemyNavigation : MonoBehaviour {
-
-	[SerializeField]
+		
 	private Transform target_ =null;
 	private NavMeshAgent agent_ = null;
 
@@ -23,6 +22,7 @@ public class EnemyNavigation : MonoBehaviour {
 		if (agent_.remainingDistance <= float.Epsilon || retargetTimer_.IsFinished()) {
 			retargetTimer_.StartTimer();
 			// TODO: Advance this to allow ray traveling, so continues after reaching point for some time?
+			target_ = VRTK_DeviceFinder.HeadsetTransform();
 			agent_.destination = target_.position;
 		}
 	}
