@@ -34,7 +34,7 @@ public class WaveController : MonoBehaviour {
 
 	private void Update() {
 		if (waveNumber  < waveSettings.Length) {
-			if (numberOfEnemiesLeft < 0) {
+			if (numberOfEnemiesLeft <= 0) {
 				waveTimer.Update();
 				waveText.text = "Wave: " + waveNumber.ToString("F0") +
 					"\nNext Wave in: " + waveTimer.TimeRemaining().ToString("F1");
@@ -45,7 +45,7 @@ public class WaveController : MonoBehaviour {
 			}
 			else {
 				waveText.text = "Wave: " + waveNumber.ToString("F0") +
-					"\nEnemies Left: " + (1 + numberOfEnemiesLeft).ToString();
+					"\nEnemies Left: " + (numberOfEnemiesLeft).ToString();
 			}
 		}
 		else {
@@ -65,6 +65,6 @@ public class WaveController : MonoBehaviour {
 			waveTimer.StartTimer();
 		}
 		waveText.text = "Wave: " + waveNumber.ToString("F0") +
-					"\nEnemies Left: " + (1+numberOfEnemiesLeft).ToString();
+					"\nEnemies Left: " + (numberOfEnemiesLeft).ToString();
 	}
 }

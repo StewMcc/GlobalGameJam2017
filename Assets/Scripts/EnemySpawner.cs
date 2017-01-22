@@ -47,6 +47,7 @@ public class EnemySpawner : MonoBehaviour {
 		spawnTimer.SetTimer(SelecteRandomTimeToSpawn(minTimeToSpawn, maxTimeToSpawn));
 		spawnTimer.StartTimer();
 		isSpawning = true;
+		numSpawned = 0;
 		return baseSpawnNumber + currentWaveSettings.increaseOfEnemies;
 	}
 
@@ -63,10 +64,11 @@ public class EnemySpawner : MonoBehaviour {
 	void SpawnEnemy() {
 		numSpawned++;
 		GameObject enemy = Instantiate(objectToSpawn, SelectRandomPosition(sizeOfSpawnArea), Quaternion.identity) as GameObject;
+		enemy.transform.parent = transform;
 		enemy.GetComponent<EnemyDeath>().scoreValue *= currentWaveSettings.enemyScoreMultiplier;
 		enemy.GetComponent<EnemyDeath>().enemyDamage *= currentWaveSettings.enemyDamageMultiplier;
 		enemy.GetComponent<NavMeshAgent>().speed = baseEnemySpeed * currentWaveSettings.enemySpeedMultiplier;
-		if (numSpawned > (baseSpawnNumber + currentWaveSettings.increaseOfEnemies)) {
+		if (numSpawned >= (baseSpawnNumber + currentWaveSettings.increaseOfEnemies)) {
 			isSpawning = false;
 		}
 	}

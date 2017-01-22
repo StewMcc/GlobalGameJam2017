@@ -46,6 +46,21 @@ GameObject:
   - component: {fileID: 114291162184918554}
   m_Layer: 0
   m_Name: MicroWave
+  m_TagString: DamagingMicroWave
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1482634561534316
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4514753095586124}
+  m_Layer: 0
+  m_Name: GrabPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -132,7 +147,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4562121365629980}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4341289091390054
 Transform:
@@ -145,8 +160,21 @@ Transform:
   m_LocalScale: {x: 10, y: 0.19999999, z: 0.20000009}
   m_Children: []
   m_Father: {fileID: 4562121365629980}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!4 &4514753095586124
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1482634561534316}
+  m_LocalRotation: {x: -0.38268343, y: 0, z: 0, w: 0.92387956}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4562121365629980}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -45, y: 0, z: 0}
 --- !u!4 &4562121365629980
 Transform:
   m_ObjectHideFlags: 1
@@ -157,9 +185,10 @@ Transform:
   m_LocalPosition: {x: 0.71, y: 0.925, z: 0.493}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4514753095586124}
+  - {fileID: 4341289091390054}
   - {fileID: 4193291590284566}
   - {fileID: 224347636862947558}
-  - {fileID: 4341289091390054}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
@@ -314,8 +343,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.21127962, y: 0.24320903, z: 0.1944543}
-  m_Center: {x: 0.050109148, y: -0.07288176, z: 0.13857883}
+  m_Size: {x: 0.21127963, y: 0.17702772, z: 0.13712367}
+  m_Center: {x: 0.050109148, y: -0.09637827, z: 0.10991365}
 --- !u!65 &65955463526033986
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -326,8 +355,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5375, y: 0.35000005, z: 0.29631078}
-  m_Center: {x: 0.007690087, y: -0.0096501205, z: 0.14815539}
+  m_Size: {x: 0.38700002, y: 0.25200003, z: 0.21334377}
+  m_Center: {x: 0.0055368617, y: -0.006948082, z: 0.106671885}
 --- !u!114 &114083448516760078
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -339,9 +368,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8afa0b205791c9f4496bf2814aeac078, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  precisionGrab: 1
-  rightSnapHandle: {fileID: 0}
-  leftSnapHandle: {fileID: 0}
+  precisionGrab: 0
+  rightSnapHandle: {fileID: 4514753095586124}
+  leftSnapHandle: {fileID: 4514753095586124}
   throwVelocityWithAttachDistance: 0
   throwMultiplier: 1
   onGrabCollisionDelay: 0
@@ -553,7 +582,7 @@ RectTransform:
   m_Children:
   - {fileID: 224066499062439508}
   m_Father: {fileID: 4562121365629980}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 114.56799, y: -0.000015258789, z: -0.000015258789}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

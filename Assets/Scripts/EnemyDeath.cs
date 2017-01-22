@@ -12,16 +12,16 @@ public class EnemyDeath : MonoBehaviour {
 	private void OnTriggerEnter(Collider other) {
 		if (other.gameObject.tag == "DamagingMicroWave") {
 			// start animation or wooble? then death, fire off animator state?
-			Destroy(gameObject);
-			EventManagerPlayer.PlayerScored(scoreValue);
 			WaveController.numberOfEnemiesLeft--;
+			EventManagerPlayer.PlayerScored(scoreValue);
+			Destroy(gameObject);
 
 		}
 		else if (other.gameObject.tag == "MainCamera") {
 			// start animation or wooble? then death, fire off animator state?
-			Destroy(gameObject);
 			EventManagerPlayer.EnemyAttacked(enemyDamage);
 			WaveController.numberOfEnemiesLeft--;
+			Destroy(gameObject);
 		}
 		else {
 			VRTK_InteractableObject hitObject = other.GetComponent<VRTK_InteractableObject>();
