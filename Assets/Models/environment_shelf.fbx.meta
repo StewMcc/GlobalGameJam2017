@@ -1,32 +1,17 @@
 fileFormatVersion: 2
-guid: 62f338f6a1ecd0842bbd0b070deed05a
-timeCreated: 1485041250
+guid: 2e64f2915073b1549ac1b1876758d1b5
+timeCreated: 1485094322
 licenseType: Pro
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
-    100002: environment_cooker left door
-    100004: environment_sink cooker door
-    100006: environment_cooker right door
     400000: //RootNode
-    400002: environment_cooker left door
-    400004: environment_sink cooker door
-    400006: environment_cooker right door
     2300000: //RootNode
-    2300002: environment_cooker left door
-    2300004: environment_sink cooker door
-    2300006: environment_cooker right door
     3300000: //RootNode
-    3300002: environment_cooker left door
-    3300004: environment_sink cooker door
-    3300006: environment_cooker right door
-    4300000: environment_cooker
-    4300002: environment_cooker left door
-    4300004: environment_sink cooker door
-    4300006: environment_cooker right door
+    4300000: environment_shelf
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
   animations:
@@ -52,8 +37,8 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
-    importBlendShapes: 0
-    swapUVChannels: 1
+    importBlendShapes: 1
+    swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
@@ -68,7 +53,7 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
-  importAnimation: 0
+  importAnimation: 1
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2
